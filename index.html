@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY WEBSITE</title>
+    <title>My Personal Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,17 +24,25 @@
     </section>
     
     <section id="about">
-       <section id="about">
-    <h2>About Me</h2>
-    <img src="images/profile.jpg" alt="My Profile Picture" width="200">
-    <p>Hello! I am Carleen Edward, a passionate web developer specializing in HTML, CSS, and JavaScript.</p>
-</section>
-
+        <h2>About Me</h2>
+        <img src="images/profile.jpg" alt="My Profile Picture" width="200">
+        <p>Hello! I am carleen edward, a passionate web developer specializing in HTML, CSS, and JavaScript.</p>
     </section>
     
     <section id="projects">
-        <h2>Projects</h2>
-        <div id="project-list"></div>
+        <h2>Projects Portfolio</h2>
+        <div class="portfolio-filters">
+            <button class="filter-btn" data-category="all">All</button>
+            <button class="filter-btn" data-category="web">Web</button>
+            <button class="filter-btn" data-category="data">Data</button>
+            <button class="filter-btn" data-category="ai">AI</button>
+        </div>
+        <div id="project-list">
+            <div class="project" data-category="web">Project 1 - Web Development</div>
+            <div class="project" data-category="data">Project 2 - Data Analysis</div>
+            <div class="project" data-category="ai">Project 3 - AI Model</div>
+            <div class="project" data-category="web">Project 4 - UI/UX Design</div>
+        </div>
     </section>
     
     <section id="blog">
