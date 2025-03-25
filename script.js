@@ -1,6 +1,6 @@
 /* script.js */
 document.addEventListener("DOMContentLoaded", function() {
-    // Dynamic greeting based on time of day
+    // Dynamic Greeting based on time of day
     const greeting = document.getElementById("greeting");
     const hour = new Date().getHours();
     if (hour < 12) {
@@ -11,29 +11,20 @@ document.addEventListener("DOMContentLoaded", function() {
         greeting.textContent = "Good Evening!";
     }
 
-    // Blog Section - Load blog posts dynamically
-    const blogPosts = [
-        { title: "My First Blog Post", content: "This is my first blog post!" },
-        { title: "Learning JavaScript", content: "JavaScript is awesome for interactivity!" },
-        { title: "CSS Tricks", content: "Styling with CSS can be fun and powerful!" }
-    ];
-
-    const blogContainer = document.getElementById("blog-posts");
-    blogPosts.forEach(post => {
-        let article = document.createElement("article");
-        article.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-        blogContainer.appendChild(article);
-    });
-
-    // Form validation
+    // Form Validation
     document.getElementById("contact-form").addEventListener("submit", function(event) {
         event.preventDefault();
         let name = document.getElementById("name").value;
         let email = document.getElementById("email").value;
         let message = document.getElementById("message").value;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
         if (name === "" || email === "" || message === "") {
             alert("All fields are required!");
+            return;
+        }
+        if (!emailPattern.test(email)) {
+            alert("Enter a valid email address!");
             return;
         }
         alert("Message sent successfully!");
@@ -51,4 +42,29 @@ document.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-mode");
     }
+
+    // Modal Popups
+    document.querySelectorAll(".project").forEach(item => {
+        item.addEventListener("click", function() {
+            let modal = document.createElement("div");
+            modal.classList.add("modal");
+            modal.innerHTML = `<div class="modal-content"><span class="close">&times;</span><p>${this.dataset.title}</p></div>`;
+            document.body.appendChild(modal);
+            document.querySelector(".close").addEventListener("click", () => modal.remove());
+        });
+    });
+
+    // Progress Bars
+    document.querySelectorAll(".progress-bar").forEach(bar => {
+        let width = 0;
+        let max = bar.dataset.max;
+        let interval = setInterval(() => {
+            if (width >= max) clearInterval(interval);
+            else {
+                width++;
+                bar.style.width = width + "%";
+            }
+        }, 20);
+    });
 });
+
